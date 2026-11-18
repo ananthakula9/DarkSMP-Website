@@ -2,7 +2,10 @@
 
 Website for DarkSMP, a Java Edition survival multiplayer server.
 
-The project is at the end of **Phase 6: Final Engineering, Design, Accessibility, Performance, SEO, Security, and Deployment-Readiness Audit**. The homepage has since been redesigned as an art-directed Minecraft landing page and is awaiting visual approval. The redesign is homepage-only; World, Rules, and Community retain the approved Phase 6 design. No production deployment, commit, or push has been performed. Store content remains deferred.
+**Live site:** https://darksmp-website.vercel.app  
+**Source:** https://github.com/ananthakula9/DarkSMP-Website
+
+The project completed **Phase 6: Final Engineering, Design, Accessibility, Performance, SEO, Security, and Deployment-Readiness Audit**. The homepage has since been redesigned as an art-directed Minecraft landing page and is awaiting visual approval. The redesign is homepage-only; World, Rules, and Community retain the approved Phase 6 design. The live status is pinned to Online by owner decision. The site is deployed on Vercel and the source is published on GitHub. Store content remains deferred.
 
 ## Stack
 
@@ -125,7 +128,7 @@ The sitemap includes `/`, `/world`, `/rules`, and `/community`. The store is int
 - The 404 page has its own title and description and relies on Next.js's automatic `noindex`. The root layout intentionally does not set a conflicting `robots` directive.
 - `sitemap.xml` intentionally omits `lastmod` because no reliable content-modification date exists.
 - `robots.txt` allows the site, disallows `/api/`, and includes the sitemap. It does not emit a `Host` directive.
-- Canonical, Open Graph, sitemap, and robots URLs remain on `http://localhost:3000` until `NEXT_PUBLIC_SITE_URL` is set to the real production origin.
+- Canonical, Open Graph, sitemap, and robots URLs derive from `NEXT_PUBLIC_SITE_URL`. Local builds default to `http://localhost:3000`; the Vercel production project sets the variable to `https://darksmp-website.vercel.app`.
 
 ## Security and privacy
 
@@ -151,11 +154,21 @@ A Content Security Policy is **not enabled**. A production policy must account f
 
 HSTS is **not enabled**. Enable it only after HTTPS is confirmed on the production domain. Start with a short `max-age`, then extend it and add `includeSubDomains` only when every subdomain is HTTPS-ready.
 
-## Deployment requirements
+## Deployment
 
-Before deploying:
+Current production deployment:
 
-1. Supply the real production domain and set `NEXT_PUBLIC_SITE_URL` to its HTTPS origin.
+- Host: Vercel, project `darksmp-website` under the `onepiece101` scope
+- Production URL: `https://darksmp-website.vercel.app`
+- Node.js runtime: 26.x
+- GitHub repository: `ananthakula9/DarkSMP-Website`, production branch `main`
+- `NEXT_PUBLIC_SITE_URL=https://darksmp-website.vercel.app` is set in the Vercel production environment
+- Pushes to `main` deploy automatically through the connected GitHub repository
+- Manual production deployment: `npx vercel deploy --prod`
+
+Before deploying a custom domain:
+
+1. Add the domain in Vercel, then set `NEXT_PUBLIC_SITE_URL` to its HTTPS origin.
 2. Rebuild the site so canonical, Open Graph, Twitter, sitemap, and robots URLs use that origin.
 3. Confirm the host supports Node.js, can run the dynamic `/api/status` route, and — if the status override is disabled — can make outbound HTTPS requests to `api.mcsrvstat.us`.
 4. Run `npm ci`, `npm run lint`, `npm run typecheck`, and `npm run build`, then start with `npm run start`.
@@ -163,7 +176,7 @@ Before deploying:
 6. Decide and test CSP and HSTS at the hosting or proxy layer.
 7. Confirm CDN behavior matches the 60-second status cache policy.
 
-Do not deploy while the production URLs still resolve to localhost. No deployment has been performed.
+A custom domain is not configured; the site currently uses the Vercel production URL.
 
 ## Verification
 
@@ -218,7 +231,7 @@ These are local-lab measurements, not field data or Lighthouse scores.
 - The public status is pinned to Online by owner decision. It does not report the Aternos server's actual availability and can show Online while the server is sleeping.
 - Provider-backed status remains implemented behind the override. If it is re-enabled, live status depends on the free third-party mcsrvstat service; outages, rate limits, or contract changes surface as `unavailable`.
 - Aternos servers sleep when empty. With the override disabled, `offline` can mean sleeping rather than permanently shut down, and the UI states this.
-- The production domain is undecided, so canonical, social, sitemap, and robots URLs point at localhost until `NEXT_PUBLIC_SITE_URL` is configured and the site is rebuilt.
+- No custom domain has been purchased, so the site uses `https://darksmp-website.vercel.app` for canonical, social, sitemap, and robots URLs. Update `NEXT_PUBLIC_SITE_URL` and redeploy if a domain is added.
 - The homepage uses an owner-supplied Minecraft image, not a confirmed screenshot of the DarkSMP world. The UI labels the image accordingly. The source is 1200 × 750, so large screens upscale and crop it; a higher-resolution owner-supplied screenshot would be required for a sharper 1920 px hero.
 - The World page still uses the decorative chunk plate. Authentic DarkSMP screenshots can replace it when they are supplied.
 - There is no checked-in automated test suite. The Phase 6 and homepage Playwright/axe harnesses were external tools.
@@ -252,4 +265,4 @@ The route groups keep the homepage's forest palette, transparent hero header, an
 
 ## Status
 
-Phase 6 is complete pending approval. The homepage redesign is implemented with the status display pinned Online by owner decision, and it is awaiting visual approval. The source is published at https://github.com/ananthakula9/DarkSMP-Website. No deployment to a public web host, domain purchase, or external service change has been made.
+Phase 6 is complete pending approval. The homepage redesign is implemented with the status display pinned Online by owner decision, and it is awaiting visual approval. The site is live at https://darksmp-website.vercel.app and the source is published at https://github.com/ananthakula9/DarkSMP-Website. No custom domain has been purchased.
