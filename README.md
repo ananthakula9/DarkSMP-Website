@@ -252,4 +252,4 @@ The route groups keep the homepage's forest palette, transparent hero header, an
 
 ## Status
 
-Phase 6 is complete pending approval. The homepage redesign is implemented with the status display pinned Online by owner decision, and it is awaiting visual approval. No commit, push, deployment, domain purchase, or external service change has been made.
+Phase 6 is complete pending approval. The homepage redesign is implemented with the status display pinned Online by owner decision, and it is awaiting visual approval. The source is published at https://github.com/ananthakula9/DarkSMP-Website. No deployment to a public web host, domain purchase, or external service change has been made.
