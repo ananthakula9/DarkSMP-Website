@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ChunkMark } from "@/components/brand/chunk-mark";
 import { cn } from "@/lib/cn";
 
 type WordmarkProps = {
@@ -14,11 +14,17 @@ export function Wordmark({ className, onClick }: WordmarkProps) {
       onClick={onClick}
       aria-label="DarkSMP home"
       className={cn(
-        "inline-flex shrink-0 items-center gap-2.5 text-ink",
+        "inline-flex shrink-0 items-center gap-3 text-ink",
         className,
       )}
     >
-      <ChunkMark className="size-5" />
+      <Image
+        src="/images/darksmp-logo.png"
+        alt=""
+        width={49}
+        height={43}
+        className="h-9 w-auto rounded-md"
+      />
       <span
         aria-hidden="true"
         className="text-[0.9375rem] font-medium tracking-[0.08em]"

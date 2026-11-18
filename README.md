@@ -233,6 +233,7 @@ These are local-lab measurements, not field data or Lighthouse scores.
 - Aternos servers sleep when empty. With the override disabled, `offline` can mean sleeping rather than permanently shut down, and the UI states this.
 - No custom domain has been purchased, so the site uses `https://darksmp-website.vercel.app` for canonical, social, sitemap, and robots URLs. Update `NEXT_PUBLIC_SITE_URL` and redeploy if a domain is added.
 - The homepage uses an owner-supplied Minecraft image, not a confirmed screenshot of the DarkSMP world. The UI labels the image accordingly. The source is 1200 × 750, so large screens upscale and crop it; a higher-resolution owner-supplied screenshot would be required for a sharper 1920 px hero.
+- The owner-supplied header logo is 49 × 43 and displayed at 36 px high. It can look soft on high-density displays; a larger source file would improve sharpness.
 - The World page still uses the decorative chunk plate. Authentic DarkSMP screenshots can replace it when they are supplied.
 - There is no checked-in automated test suite. The Phase 6 and homepage Playwright/axe harnesses were external tools.
 - No Content Security Policy or HSTS header is enabled yet.
@@ -244,6 +245,8 @@ These are local-lab measurements, not field data or Lighthouse scores.
 Only confirmed DarkSMP information is published. Do not add invented gameplay features, world generation, builds, shops, economies, PvP claims, events, player counts, ranks, staff, testimonials, server history, store products, or supported Minecraft versions. ViaVersion and ViaBackwards are installed, but the site does not claim that every Minecraft version is supported.
 
 The homepage image is a supplied Minecraft scene, not evidence of the DarkSMP world. Keep its caption and do not present it as a DarkSMP screenshot. The World page is intentionally limited to connection facts and can use authentic DarkSMP screenshots when they are supplied.
+
+The owner-supplied logo is displayed beside the DarkSMP wordmark. Its embedded “DARK BROTHERS” lettering is part of the supplied artwork; do not recreate or retouch it unless a higher-resolution official asset is supplied.
 
 The Rules page publishes only the approved rule set. Do not add punishment durations, staff names, a dedicated appeals channel, or a last-updated date unless a real date is supplied.
 
@@ -260,6 +263,7 @@ Geist Sans and Geist Mono are self-hosted from variable WOFF2 files in `app/font
 - `components/` — shared layout, content, server, brand, and UI components
 - `lib/` — confirmed site data, navigation, rules, metadata helpers, status contract and provider normalization
 - `public/images/minecraft-night-lanterns.jpg` — owner-supplied Minecraft image used by the homepage
+- `public/images/darksmp-logo.png` — owner-supplied logo used beside the wordmark in the header and footer
 
 The route groups keep the homepage's forest palette, transparent hero header, and landing-page layout from changing the subpages. Both groups use the same root document, skip link, header/footer components, status API, and confirmed site data.
 
